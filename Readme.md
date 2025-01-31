@@ -62,9 +62,9 @@ hostssl   all             all             172.17.0.0/16          md5
 │       └── script.php
 ├── public
 │   └── index.php
+├── private
 ├── .env.example
 ├── .gitignore
-├── private
 ├── .dockerignore
 ├── Dockerfile
 ├── docker-compose.yml
