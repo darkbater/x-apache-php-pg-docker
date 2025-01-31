@@ -47,3 +47,28 @@ listen_addresses = '*'
 host      all             all             172.17.0.0/16          md5
 hostssl   all             all             172.17.0.0/16          md5
 ```
+
+# Базовая структура
+
+```
+.
+├── ext
+│   └── 000-deafult.conf
+├── bin
+│   ├── js
+│   │   └── script.js
+│   └── php
+│       ├── db_connect.php
+│       └── script.php
+├── public
+│   └── index.php
+├── .env.example
+├── .gitignore
+├── private
+├── .dockerignore
+├── Dockerfile
+├── docker-compose.yml
+├── .version
+├── build_n_up.sh
+└── Readme.md
+```
