@@ -6,6 +6,12 @@ $db_name = getenv('POSTGRES_DB')        ?: 'app_database';
 $db_user = getenv('POSTGRES_USER')      ?: 'user';
 $db_pass = getenv('POSTGRES_PASSWORD')  ?: 'password';
 
+echo $db_host;
+echo $db_port;
+echo $db_name;
+echo $db_user;
+echo $db_pass;
+
 try {
     // Создаем новое подключение PDO
     $dsn = "pgsql:host=$db_host;port=$db_port;dbname=$db_name;";

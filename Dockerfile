@@ -9,6 +9,7 @@ RUN apt-get update && \
 COPY ./public /var/www/html/public/
 COPY ./bin/php /var/www/html/bin/php/
 COPY ./bin/js /var/www/html/bin/js/
+COPY ./.env.example /var/www/html/.env.example
 
 # или
 
