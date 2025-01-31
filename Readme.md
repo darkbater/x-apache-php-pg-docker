@@ -1,58 +1,34 @@
-# Учебный проект по созданию приложения на связке php+apache+postgres, с запуском в docker-compose контейнере.
+## Запуск контейнера из DockerHub
 
-# docker-php-ext-install - скрипт, входящий в состав docker. Упрощает процесс установки расширений без необходимости вручную устанавливать и 
-# компилировать их. Стандартный способ добавления расширений в официальных PHP Docker-образах.
-
-
-
-# Тут будет развиваться дальнешая документация.
-Этапы
-1. Опредение настроек контейнера, для создания образа.
-2. Определение переменных окружения, для разработки и распространения.
-
-
-1. Опредение настроек контейнера, для создания образа.
-
-```dockerfile
-
-
+```bash
+docker run -d \
+  --name x-docker \
+  -p 8089:80 \
+  --add-host=host.docker.internal:host-gateway \
+  -e POSTGRES_HOST=host.docker.internal \
+  -e POSTGRES_PORT=5432 \
+  -e POSTGRES_DB=x-docker \
+  -e POSTGRES_USER=x-docker \
+  -e POSTGRES_PASSWORD=x-docker \
+  darkbater/x-apache-php-pg-docker:v1.0.3
 ```
 
-```yaml
-services:
+### Устранение неполадок при подключении к db:
 
-  web:
-    container_name: app-main
-    # Буквы (a–z, A–Z)
-    # Цифры (0–9)
-    # Дефисы (-)
-    # Подчеркивания (_)
-    # Точки (.)
-
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-    networks:
-
-  db:
-    container_name: app-db
-    image: postgres:15
-
-volumes:
-    db_data:
-
-#   db_data:         # Для данных базы данных
-#   redis_data:      # Для данных Redis
-#   app_logs:        # Для логов приложения
-
-
-networks:
-  app-network
-
+Узнать подсеть:
+```bash
+ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'
 ```
 
+Проверить, что подсеть разрешена в postgres:
 
-2. Определение переменных окружения, для разработки и распространения.
+*/etc/postgresql/{version}/main/postgresql.conf* 
+```ini
+listen_addresses = '*'
+```
 
-Для этого создаём файл .env и помещаем его в .gitignore,  а при установке докером - копируем деволтный .env из ext?
+*/etc/postgresql/15/main/pg_hba.conf:*
+```ini
+host      all             all             172.17.0.0/16          md5
+hostssl   all             all             172.17.0.0/16          md5
+```
