@@ -1,3 +1,18 @@
+# Запуск приложения
+
+## Запуск приложения из GitHuib
+
+```bash
+# клонирование репозитория
+gh repo clone darkbater/x-apache-php-pg-docker
+# перезод в каталог проекта
+cd x-apache-php-pg-docker
+# установка подключаения к db по-умолчанию
+cp .env.example .env
+# запук контейнеров приложения
+docker compose up -d
+```
+
 ## Запуск контейнера из DockerHub
 
 ```bash
