@@ -1,0 +1,49 @@
+# Файлы настроек среды
+.env
+*.env
+
+# Логи
+logs/
+*.log
+
+# Кэши
+.cache/
+.tmp/
+temp/
+
+# Файлы с конфиденциальными данными
+private/
+
+# Файлы IDE / редакторов
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker-файлы
+#.dockerignore
+#docker-compose.yml
+
+# # Каталоги зависимостей
+# node_modules/
+# vendor/
+
+# # Файлы операционных систем
+# .DS_Store
+# Thumbs.db
+
+# # Сгенерированные файлы
+# /public/assets/
+# public/*.min.js
+# public/*.min.css
+
+# # Файлы Composer
+# composer.phar
+
+# # Файлы PHPUnit
+# phpunit.xml
+# phpunit.xml.dist
+
+# # Файлы PHPUnit coverage
+# coverage/
+
